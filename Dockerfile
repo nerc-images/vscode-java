@@ -1,14 +1,17 @@
 FROM quay.io/opendatahub-contrib/workbench-images:vscode-datascience-c9s-py311_2023c_latest
 
-MAINTAINER Christopher Tate <computate@computate.org>
-
 ENV IJAVA_VERSION=1.3.0 \
   JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
 USER root
 
 # Install pip dependencies
-RUN pip install jupyter jupyterlab notebook ansible bash_kernel
+RUN pip install \
+  jupyter \
+  jupyterlab \
+  notebook \
+  ansible \
+  bash_kernel
 RUN python -m bash_kernel.install
 # Install IJava Kernel
 WORKDIR /usr/local/opt/ijava
