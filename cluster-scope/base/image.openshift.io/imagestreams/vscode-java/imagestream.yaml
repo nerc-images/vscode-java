@@ -6,7 +6,7 @@ metadata:
   labels:
     opendatahub.io/notebook-image: "true"
   annotations:
-    opendatahub.io/notebook-image-url: "https://github.com/computate-org/vscode-java"
+    opendatahub.io/notebook-image-url: "https://github.com/nerc-images/vscode-java"
     opendatahub.io/notebook-image-name: "VSCode IJava java-17-openjdk"
     opendatahub.io/notebook-image-desc: |-
       An OpenShift AI Image for Java development. 
