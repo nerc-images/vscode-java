@@ -1,9 +1,9 @@
 # vscode-java
 
-An OpenShift AI Image running VSCode for Java development. 
-- Based on the [IJava project by SpencerPark](https://github.com/SpencerPark/IJava) on GitHub for Jupyter Lab Notebook integration. 
+An OpenShift AI Image running VSCode for Java development.
+- Based on the [IJava project by SpencerPark](https://github.com/SpencerPark/IJava) on GitHub for Jupyter Lab Notebook integration.
 - Uses java-17-openjdk-devel and maven package support.
-- Used by the Smarta Byar Smart Village Community using AI/ML code generation technology for Smart Data Model APIs. 
+- Used by the Smarta Byar Smart Village Community using AI/ML code generation technology for Smart Data Model APIs.
 
 | Python packages | Description |
 | --- | --- |
@@ -20,7 +20,7 @@ An OpenShift AI Image running VSCode for Java development.
 | java-17-openjdk-devel | We provide the full Java 17 OpenJDK SDK to run and compile Java applications cloned from git in the terminal and Java inline Jupyter Notebooks. |
 | maven | Maven is provided for compiling, installing, and deploying Java packages to Maven Central. |
 
-You can pull the latest [vscode-java container image](https://github.com/nerc-images/vscode-java/pkgs/container/vscode-java) below: 
+You can pull the latest [vscode-java container image](https://github.com/nerc-images/vscode-java/pkgs/container/vscode-java) below:
 
 ```
 podman pull ghcr.io/nerc-images/vscode-java:main
