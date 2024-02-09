@@ -1,19 +1,27 @@
 # vscode-java
 
-## Build the container with podman
+An OpenShift AI Image running VSCode for Java development. 
+- Based on the [IJava project by SpencerPark](https://github.com/SpencerPark/IJava) on GitHub for Jupyter Lab Notebook integration. 
+- Uses java-17-openjdk-devel and maven package support.
+- Used by the Smarta Byar Smart Village Community using AI/ML code generation technology for Smart Data Model APIs. 
 
-```bash
-cd ~/.local/src/vscode-java
-podman build -t computateorg/vscode-java:latest .
+| Python packages | Description |
+| --- | --- |
+| jupyterlab | A web-based user interface to work with Jupyter notebooks, editors, terminals, and custom components |
+| bash_kernel | A Jupyter kernel for bash |
+| ansible | For running Ansible Playbooks from Jupyter Notebooks, like deploying applications to an OpenShift Project with the [Smart Village Operator](https://github.com/smartabyar-smartvillage/smartvillage-operator). |
+
+| Downloaded packages | Description |
+| --- | --- |
+| IJava | We download IJava 1.3.0 with curl, unzip it, and install it with the provided install.py into /opt/app-root. |
+
+| System packages | Description |
+| --- | --- |
+| java-17-openjdk-devel | We provide the full Java 17 OpenJDK SDK to run and compile Java applications cloned from git in the terminal and Java inline Jupyter Notebooks. |
+| maven | Maven is provided for compiling, installing, and deploying Java packages to Maven Central. |
+
+You can pull the latest [vscode-java container image](https://github.com/nerc-images/vscode-java/pkgs/container/vscode-java) below: 
+
 ```
-
-## Test the container locally
-```bash
-podman run --rm -it computateorg/vscode-java:latest /bin/bash
-```
-
-## Push the container up to quay.io
-```bash
-podman login quay.io
-podman push computateorg/vscode-java:latest quay.io/computateorg/vscode-java:latest
+podman pull ghcr.io/nerc-images/vscode-java:main
 ```
