@@ -7,11 +7,9 @@ USER root
 
 # Install pip dependencies
 RUN pip install \
-  jupyter \
   jupyterlab \
-  notebook \
-  ansible \
-  bash_kernel
+  bash_kernel \
+  ansible
 RUN python -m bash_kernel.install
 # Install IJava Kernel
 WORKDIR /usr/local/opt/ijava
