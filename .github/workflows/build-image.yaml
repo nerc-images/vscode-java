@@ -16,11 +16,15 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
+  IMAGE_CONTEXT: "."
+  IMAGE_CONTAINERFILE: Containerfile
   IMAGE_NAME: ${{ github.repository }}
+  REGISTRY_USER: ${{ github.actor }}
+  REGISTRY_PASSWORD: ${{ github.token }}
 
 
 jobs:
-  build:
+  podman-build:
 
     runs-on: ubuntu-latest
     permissions:
@@ -29,17 +33,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-
-      # Login against a Docker registry except on PR
-      # https://github.com/docker/login-action
-      - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/checkout@v4
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
@@ -56,13 +50,25 @@ jobs:
             type=ref,event=pr
             type=sha
 
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+      # Build container image with buildah
+      # https://github.com/redhat-actions/buildah-build
+      - name: Build container image
+        uses: redhat-actions/buildah-build@v2
         with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
+          context: ${{ env.IMAGE_CONTEXT }}
+          containerfiles: ${{ env.IMAGE_CONTAINERFILE }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          layers: false
+          oci: true
 
+      # Log in and push container image to registry (don't push on PR)
+      # https://github.com/redhat-actions/push-to-registry
+      - name: Push to registry
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          tags: ${{ steps.meta.outputs.tags }}
+          registry: ${{ env.IMAGE_REGISTRY }}
+          username: ${{ env.REGISTRY_USER }}
+          password: ${{ env.REGISTRY_PASSWORD }}
+        if: github.event_name != 'pull_request'
