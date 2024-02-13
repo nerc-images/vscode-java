@@ -5,6 +5,8 @@ An OpenShift AI Image running VSCode for Java development.
 - Uses java-17-openjdk-devel and maven package support.
 - Used by the Smarta Byar Smart Village Community using AI/ML code generation technology for Smart Data Model APIs.
 
+Base image: [quay.io/opendatahub-contrib/workbench-images:vscode-datascience-c9s-py311_2023c_latest](https://github.com/opendatahub-io-contrib/workbench-images)
+
 | Python packages | Description |
 | --- | --- |
 | jupyterlab | A web-based user interface to work with Jupyter notebooks, editors, terminals, and custom components |
