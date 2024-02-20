@@ -25,5 +25,5 @@ Base image: [quay.io/opendatahub-contrib/workbench-images:vscode-datascience-c9s
 You can pull the latest [vscode-java container image](https://github.com/nerc-images/vscode-java/pkgs/container/vscode-java) below:
 
 ```
-podman pull ghcr.io/nerc-images/vscode-java:main
+podman pull quay.io/nerc-images/vscode-java:latest
 ```
