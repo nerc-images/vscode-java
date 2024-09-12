@@ -22,6 +22,18 @@ Base image: [quay.io/opendatahub-contrib/workbench-images:vscode-datascience-c9s
 | java-17-openjdk-devel | We provide the full Java 17 OpenJDK SDK to run and compile Java applications cloned from git in the terminal and Java inline Jupyter Notebooks. |
 | maven | Maven is provided for compiling, installing, and deploying Java packages to Maven Central. |
 
+### Build the container with podman
+
+```bash
+podman build -t nerc-images/vscode-java:latest .
+```
+
+### Run the container with podman
+
+```bash
+podman run --rm -it --entrypoint /bin/bash nerc-images/vscode-java:latest
+```
+
 You can pull the latest [vscode-java container image](https://github.com/nerc-images/vscode-java/pkgs/container/vscode-java) below:
 
 ```
