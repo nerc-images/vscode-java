@@ -30,4 +30,6 @@ RUN dnf install -y java-17-openjdk-devel maven jq gh \
   && alternatives --set java java-17-openjdk.x86_64 \
   && alternatives --set javac java-17-openjdk.x86_64
 
+RUN chown -R 1001 /opt/app-root/src
+
 USER 1001
