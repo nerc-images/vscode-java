@@ -9,7 +9,13 @@ USER root
 RUN pip install \
   jupyterlab \
   bash_kernel \
-  ansible
+  ansible \
+  kubernetes \
+  openshift \
+  jinja2 \
+  jmespath \
+  pika \
+  --upgrade
 RUN python -m bash_kernel.install
 # Install IJava Kernel
 WORKDIR /usr/local/opt/ijava
