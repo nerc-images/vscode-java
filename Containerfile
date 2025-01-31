@@ -9,11 +9,16 @@ USER root
 RUN pip install \
   jupyterlab \
   bash_kernel \
+  ansible \
+  kubernetes \
+  openshift \
   jinja2 \
-  ansible
+  jmespath \
+  jinja2 \
+  --upgrade
 
 # Install helm
-RUN install -d /usr/local/bin/ /usr/local/src
+RUN install -d /usr/local/bin/
 RUN curl -fsSL -o /usr/local/bin/get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 RUN chmod 700 /usr/local/bin/get_helm.sh
 RUN env HELM_INSTALL_DIR=/usr/local/bin /usr/local/bin/get_helm.sh --no-sudo
