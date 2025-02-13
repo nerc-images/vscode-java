@@ -1,4 +1,4 @@
-FROM quay.io/opendatahub-contrib/workbench-images:vscode-datascience-c9s-py311_2023c_latest
+FROM quay.io/modh/codeserver:codeserver-ubi9-python-3.11-20250212
 
 ENV IJAVA_VERSION=1.3.0 \
   JAVA_HOME=/usr/lib/jvm/java-17-openjdk
